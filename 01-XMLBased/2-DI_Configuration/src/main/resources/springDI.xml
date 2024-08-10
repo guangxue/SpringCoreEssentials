@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Constructor DI -->
+    <bean id="userDAO" class="ConstructorDI.UserDAO" />
+    <bean id="userService" class="ConstructorDI.UserService">
+        <constructor-arg ref="userDAO" />
+        <constructor-arg name="name" value="Guangxue" />
+        <constructor-arg name="age" value="30" />
+    </bean>
+
+    <!-- Setter DI -->
+    <bean id="movieFinder" class="SetterDI.MovieFinder" />
+    <bean id="movieListener" class="SetterDI.MovieListener">
+        <property name="movieFinder" ref="movieFinder" />
+        <property name="movieName" value="Stranger Things" />
+    </bean>
+
+</beans>

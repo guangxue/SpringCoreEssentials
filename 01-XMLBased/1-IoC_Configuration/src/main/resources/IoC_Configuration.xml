@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- [1] No Args: Constructor -->
+    <bean id="basicObject" class="NoArgs.Constructor.BasicObject" />
+    <!-- [2] No Args: Static Factory Method - Singleton -->
+    <bean id="singleton" class="NoArgs.StaticFactoryMethod.Singleton" factory-method="getInstance" />
+    <!-- [3] No Args: Factory Method -->
+    <bean id="serviceFactory" class="NoArgs.FactoryMethod.ServiceFactory" />
+    <bean id="userService" factory-bean="serviceFactory" factory-method="createUserService" />
+    <bean id="loginService" factory-bean="serviceFactory" factory-method="createLoginService" />
+
+
+    <!-- [4] With Args: Constructor -->
+    <bean id="argObject" class="WithArgs.Constructor.ArgObject">
+        <constructor-arg value="basic_with_args_constructor"/>
+    </bean>
+
+    <!-- [5] With Args: Factory Methods -->
+    <bean id="shapeFactory" class="WithArgs.FactoryMethod.ShapeFactory" />
+    <bean id="circle" factory-bean="shapeFactory" factory-method="getShape">
+        <constructor-arg value="Circle"/>
+    </bean>
+    <bean id="square" factory-bean="shapeFactory" factory-method="getShape">
+        <constructor-arg value="Square"/>
+    </bean>
+    <bean id="rectangle" factory-bean="shapeFactory" factory-method="getShape">
+       <constructor-arg value="Rectangle" />
+    </bean>
+    <bean id="triangle" factory-bean="shapeFactory" factory-method="getShape">
+        <constructor-arg value="Triangle" />
+    </bean>
+
+</beans>

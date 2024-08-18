@@ -28,6 +28,12 @@ By default, the Spring-provided <br>
 </beans>
 ```
 
+### Basic Annotations for Spring Framework
+To utilise annotations at Spring Framework, it basically, technically can be separate by two main parts.
+One is annotations for IoC container configuration, the other is for DI Container configuration.<br>
+IoC Container configuration annotation are: `@Component`, `@Service`, `@Controller` and `@Repository`.<br>
+DI Container Configuration annotation are: `@Autowire`, `@Qualifier`, `@Resource` and ``<br>
+
 ### `@Component` Annotation
 <img src="Spring_Component_Annotations.png" alt="Spring Component Annotation" width=500><br>
 `@Component` is a generic **class-level** annotation that is used to denote a **class** as a Spring component.

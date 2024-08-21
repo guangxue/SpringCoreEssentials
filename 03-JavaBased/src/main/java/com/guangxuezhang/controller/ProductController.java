@@ -6,11 +6,4 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class ProductController {
 
-    @Autowired
-    public ProductController(ProductService productService) {}
-
-    public void findAll() {
-        List<Prouduct> products = productService.findAll();
-        System.out.println("Product List" + products);
-    }
 }

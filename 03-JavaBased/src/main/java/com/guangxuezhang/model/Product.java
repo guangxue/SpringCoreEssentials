@@ -1,12 +1,12 @@
 package com.guangxuezhang.model;
 
-public class ProductInfo {
+public class Product {
     private String item_num;
     private String item_category;
     private String item_name;
     private String item_code;
 
-    public ProductInfo(String item_num, String item_category, String item_name, String item_code) {
+    public Product(String item_num, String item_category, String item_name, String item_code) {
         this.item_num = item_num;
         this.item_category = item_category;
         this.item_name = item_name;

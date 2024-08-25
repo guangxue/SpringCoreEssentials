@@ -1,4 +1,4 @@
 package com.guangxuezhang.service;
 
-public class ProductService {
+public interface ProductService {
 }

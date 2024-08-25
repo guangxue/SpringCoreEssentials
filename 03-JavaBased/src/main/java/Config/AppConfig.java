@@ -1,5 +1,6 @@
 package Config;
 
+import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,13 +17,14 @@ import javax.sql.DataSource;
 public class AppConfig {
 
     @Bean
-    public DataSource dataSource(@Value("${db.url}") String url, @Value("${db.username}") String username
+    public DataSource dataSource(@Value("${db.driver}") String driver, @Value("${db.url}") String url, @Value("${db.username}") String username
      , @Value("${db.password}") String password) {
-        HikariDataSource dataSource = new HikariDataSource();
-        dataSource.setJdbcUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        return dataSource;
+        HikariConfig config = new HikariConfig();
+        config.setDriverClassName(org.postgresql.Driver.class.getName());
+        config.setJdbcUrl("jdbc:postgresql://localhost:5432/testdb?"+"user=guangxue&password="+password);
+        config.setUsername(username);
+        config.setPassword(password);
+        return new HikariDataSource(config);
     }
 
     @Bean

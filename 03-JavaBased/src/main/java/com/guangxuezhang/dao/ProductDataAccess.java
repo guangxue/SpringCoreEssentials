@@ -18,9 +18,9 @@ public class ProductDataAccess implements ProductDAO {
     }
 
     @Override
-    public Optional<Product> getByItemCode(String itemCode) {
-        String sql = "select * from hongfa.birch_product_info where item_code = ?";
-        Product zipper = jdbcTemplate.queryForObject(sql, new ProductMapper());
+    public Optional<Product> getByItemName(String itemName) {
+        String sql = "select * from hongfa.birch_product_info where item_name = ?";
+        Product zipper = jdbcTemplate.queryForObject(sql, new ProductMapper(), itemName);
         return Optional.ofNullable(zipper);
     }
 }

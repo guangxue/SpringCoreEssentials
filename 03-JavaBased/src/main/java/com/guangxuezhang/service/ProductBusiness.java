@@ -17,7 +17,7 @@ public class ProductBusiness implements ProductService {
     }
 
     @Override
-    public Optional<Product> getByItemCode(String itemCode) {
-        return this.productDAO.getByItemCode(itemCode);
+    public Optional<Product> getByItemName(String itemName) {
+        return this.productDAO.getByItemName(itemName);
     }
 }

@@ -9,6 +9,6 @@ public class JavaBasedTest {
     public void firstTest() {
         AnnotationConfigApplicationContext app = new AnnotationConfigApplicationContext(AppConfig.class);
         ProductController controller = app.getBean(ProductController.class);
-        controller.findZipperByItemCode("013812-147PEACH");
+        controller.findZipperByItemName("013812-147PEACH");
     }
 }

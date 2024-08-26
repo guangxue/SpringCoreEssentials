@@ -28,4 +28,8 @@ public class Product {
     public String getItemCategory() { return item_category; }
     public String getItemName() { return item_name; }
     public String getItemCode() { return item_code; }
+
+    public String toString() {
+        return "Product [item_num=" + item_num + ", item_category=" + item_category + ", item_name="+item_name+", item_code="+item_code+"]";
+    }
 }

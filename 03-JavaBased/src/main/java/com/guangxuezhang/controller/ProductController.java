@@ -17,8 +17,15 @@ public class ProductController {
         this.productService = productService;
     }
 
-    public void findZipperByItemCode(String itemCode) {
-        System.out.println(this.productService.getByItemCode(itemCode));
+    public void findZipperByItemName(String itemName) {
+        System.out.println();
+        Optional<Product> prod = productService.getByItemName(itemName);
+        if (prod.isPresent()) {
+            Product product = prod.get();
+            System.out.println(product);
+        } else {
+            System.out.println("<No product found>");
+        }
     }
 
 }

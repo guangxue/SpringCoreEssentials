@@ -12,6 +12,7 @@
         <module>01-XMLBased</module>
         <module>02-AnnotationBased</module>
         <module>03-JavaBased</module>
+        <module>04_AOP</module>
     </modules>
 
 

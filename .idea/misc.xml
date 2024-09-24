@@ -11,6 +11,7 @@
       <set>
         <option value="$PROJECT_DIR$/01-XMLBased/1-IoC/pom.xml" />
         <option value="$PROJECT_DIR$/1-XMLBased/pom.xml" />
+        <option value="$PROJECT_DIR$/test/pom.xml" />
       </set>
     </option>
   </component>

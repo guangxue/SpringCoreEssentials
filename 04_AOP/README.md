@@ -41,5 +41,25 @@ stored and retrieved quickly.
 AOP can automate the recording of audit logs for critical actions in the application,
 ensuring compliance and traceability.
 
+## Aspect Oriented Programming Core Concepts
+Before we dive into the implementation of Spring AOP implementation,
+we should understand the core concepts of AOP.
 
+![AOP_diagram.png](AOP_diagram.png)
 
+1. **Aspect**: An aspect is a class that implements enterprise application concerns
+that cut across multiple classes, such as transaction management. Aspect can be a
+normal class configured through Spring XML configuration, or we can use
+AspectJ integration to define a class as Aspect using `@Aspect` annotation.
+2. **Join Point**: A join point is a specific point in the application 
+such as `method execution`, `exception handling`, `changing object variable values`etc.
+in Spring AOP a join point is always the execution of method.
+3. **Advice**: Advices are taken for a particular join point. In terms of programming,
+they are methods that get executed when a certain join point with matching pointcut is
+reached in the application.
+4. **Pointcut**: Pointcut is expressions that match with join points to determine whether
+advice needs to be executed or not. Pointcut uses different kinds of expressions
+that are matched with the join points and Spring framework uses the AspectJ pointcut expression language.
+5. **Target Object**: They are the object on which advices are applied.
+Spring AOP is implemented using runtime proxies so this object is always a proxied
+object.

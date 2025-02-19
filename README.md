@@ -7,6 +7,14 @@ This project is demonstrating three different ways of configure beans in Spring 
 Spring IoC container is the program that injects dependencies into an object and make it ready for our use.<br>
 Spring IoC container classes are part of `org.springframework.beans` and `org.springframework.context` packages.<br>
 Spring IoC container provides us different ways to decouple the object dependencies.<br>
+```mermaid
+flowchart LR;
+    BeanFactory-->ApplicationContext;
+    ApplicationContext-->ClassPathXmlApplicationContext;
+    ApplicationContext-->FileSystemXmlApplicationContext;
+    ApplicationContext-->AnnotationConfigApplicationContext;
+    ApplicationContext-->WebApplicationContext;
+```
 
 `BeanFactory`: is the __root interface__ of Spring IoC container.<br>
 &emsp;&emsp;&emsp;&darr;<br>

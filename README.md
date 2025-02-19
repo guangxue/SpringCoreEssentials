@@ -18,7 +18,8 @@ flowchart LR;
 
 `BeanFactory`: is the __root interface__ of Spring IoC container.<br>
 &emsp;&emsp;&emsp;&darr;<br>
-`ApplicationContext`: is the __child interface__ of `BeanFactory` interface that provide Spring AOP features, i18n etc<br>
+`ApplicationContext`: is the __child interface__ of `BeanFactory` interface that provide Spring AOP features, i18n 
+etc.<br>
 &nbsp;|<br>
 &nbsp;|&nbsp;&rarr;&emsp;`ClassPathXmlApplicationContext`: Load the file and get the container object from XML configuration file.<br>
 &nbsp;|&nbsp;&rarr;&emsp;`FileSystemXmlApplicationContext`: Can be loaded from anywhere in the file system.<br>
@@ -30,7 +31,7 @@ flowchart LR;
 Spring Framework provides three ways to configure beans to be used in the application.
 1. __XML Based Configuration__ <br>
    To utilise the XML-based configuration, you need to create XML file under `resource` folder, and put `<bean id='instanceName' class='com.fullclassname' >'` to create Beans.<br>
-   More details jump to [XML-Based Configuration](01_XMLBased/README.md)
+   More details jump to [XML-Based Configuration](01-XMLBased/README.md)
 
 2. __Annotation Based Configuration__ <br>
    By using `@Service` or `@Component` annotations. Scope details can be provided with `@Scope` annotation.<br>

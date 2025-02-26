@@ -63,3 +63,17 @@ that are matched with the join points and Spring framework uses the AspectJ poin
 5. **Target Object**: They are the object on which advices are applied.
 Spring AOP is implemented using runtime proxies so this object is always a proxied
 object.
+
+## Pointcut Expression
+
+![Pointcut_Expression.png](Pointcut_Expression.png)
+
+1. **expression keyword**: Pointcut expression starts with `execution`.
+2. **Access modifier**: Use `*` means **any Access modifier and return types**.
+3. **return type**: If return type is provided, Access modifier must be provided.
+4. **package name**: Same syntax as Java package name. Use `*..` means any packages under last specified package name.
+5. **Class name**: The class name under the specified package name.
+Use `*` means any class under that package, also you can use `*Service` as any class name that ends with `Service`.
+6. **method name**: The method that will be executed at Join Points. `*` means any methods under specified package.
+You can use `get*` as any method name that starts with `get`.
+7. **Parameter list**: `(..)` means any parameter list for specified method name.

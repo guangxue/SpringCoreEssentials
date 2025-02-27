@@ -67,13 +67,27 @@ object.
 ## Pointcut Expression
 
 ![Pointcut_Expression.png](Pointcut_Expression.png)
+**Expression keyword**: Pointcut expression starts with keyword: `execution`.
 
-1. **expression keyword**: Pointcut expression starts with `execution`.
-2. **Access modifier**: Use `*` means **any Access modifier and return types**.
-3. **return type**: If return type is provided, Access modifier must be provided.
-4. **package name**: Same syntax as Java package name. Use `*..` means any packages under last specified package name.
-5. **Class name**: The class name under the specified package name.
-Use `*` means any class under that package, also you can use `*Service` as any class name that ends with `Service`.
-6. **method name**: The method that will be executed at Join Points. `*` means any methods under specified package.
+1. **Access modifier**: `public`,`private` or `protected`.
+   - Use `*` means **any access modifier and any return types**.
+2. **return type**: `String`,`int`,`void`etc.
+   - Use `*` means either return type nor access modifier are needed.
+   - It is invalid syntax to use `* String` or `public *`
+3. **package name**: Same syntax as Java package name. 
+   - Use `*..` means any packages under last specified package name.
+4. **Class name**: The class name under the specified package name.
+    - Specified package name: `com.guangxuezhang.aop`
+    - Any packages: `com.guangxuezhang.*`
+      - Use `*` means any packages under `guangxuezhang` package, also you can use `*Service` as any class name that 
+      ends with `Service`.
+    - Skip more packages: `com..guangxuezhang`.
+      - Invalid to use `..` at the beginning of package, like this `..com.guangxuezhang`
+5. **method name**: The method that will be executed at Join Points. `*` means any methods under specified package.
 You can use `get*` as any method name that starts with `get`.
-7. **Parameter list**: `(..)` means any parameter list for specified method name.
+6. **Parameter list**: 
+   - `()`: the method with no parameters.
+   - `(..)`: the method with zero or more  parameter list.
+   - `(String, ..)`: the method with parameters that first type is `String`.
+   - `(..int)`: the method with parameters that last type is `int`.
+   - `(String..int)`: the method with parameters that first is `String`, last is `int`.

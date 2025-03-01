@@ -45,7 +45,7 @@ ensuring compliance and traceability.
 Before we dive into the implementation of Spring AOP implementation,
 we should understand the core concepts of AOP.
 
-![AOP_diagram.png](AOP_diagram.png)
+<img src="AOP_diagram.png" alt="AOP diagram" width="600" height="400">
 
 1. **Aspect**: An aspect is a class that implements enterprise application concerns
 that cut across multiple classes, such as transaction management. Aspect can be a

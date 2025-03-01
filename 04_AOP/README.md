@@ -15,6 +15,7 @@ to their application **without modifying the actual business logic.**
 ### 1. Logging
 AOP can be used to log method entry, exit and exceptions across various layers of
 an application without cluttering the business logic with logging code.
+https://github.com/guangxue/SpringCoreEssentials/blob/585541781ab2e8ccbb36b1e41f55e338e0c79f7d/04_AOP/src/main/java/com/guangxuezhang/aop/logging/aspect/LoggingAspect.java#L9-L22
 
 ### 2. Transaction Management
 AOP can manage transactions declaratively, ensuring that business methods are
@@ -91,3 +92,5 @@ You can use `get*` as any method name that starts with `get`.
    - `(String, ..)`: the method with parameters that first type is `String`.
    - `(..int)`: the method with parameters that last type is `int`.
    - `(String..int)`: the method with parameters that first is `String`, last is `int`.
+
+## Combining Pointcut Expression

@@ -11,6 +11,57 @@ The powerful feature of the Spring Framework that allows developers to add
 cross-cutting concerns(such as logging, transaction management, security, etc.)
 to their application **without modifying the actual business logic.**
 
+## Aspect Oriented Programming Core Concepts
+Before we dive into the implementation of Spring AOP implementation,
+we should understand the core concepts of AOP.
+
+<img src="AOP_diagram.png" alt="AOP diagram" width="600" height="400">
+
+1. **Aspect**: An aspect is a class that implements enterprise application concerns
+   that cut across multiple classes, such as transaction management. Aspect can be a
+   normal class configured through Spring XML configuration, or we can use
+   AspectJ integration to define a class as Aspect using `@Aspect` annotation.
+2. **Join Point**: A join point is a specific point in the application
+   such as `method execution`, `exception handling`, `changing object variable values`etc.
+   in Spring AOP a join point is always the execution of method.
+3. **Advice**: Advices are taken for a particular join point. In terms of programming,
+   they are methods that get executed when a certain join point with matching pointcut is
+   reached in the application.
+4. **Pointcut**: Pointcut is expressions that match with join points to determine whether
+   advice needs to be executed or not. Pointcut uses different kinds of expressions
+   that are matched with the join points and Spring framework uses the AspectJ pointcut expression language.
+5. **Target Object**: They are the object on which advices are applied.
+   Spring AOP is implemented using runtime proxies so this object is always a proxied
+   object.
+
+## Pointcut Expression
+
+![Pointcut_Expression.png](Pointcut_Expression.png)
+**Expression keyword**: Pointcut expression starts with keyword: `execution`.
+
+1. **Access modifier**: `public`,`private` or `protected`.
+   - Use `*` means **any access modifier and any return types**.
+2. **return type**: `String`,`int`,`void`etc.
+   - Use `*` means either return type nor access modifier are needed.
+   - It is invalid syntax to use `* String` or `public *`
+3. **package name**: Same syntax as Java package name. 
+   - Use `*..` means any packages under last specified package name.
+4. **Class name**: The class name under the specified package name.
+    - Specified package name: `com.guangxuezhang.aop`
+    - Any packages: `com.guangxuezhang.*`
+      - Use `*` means any packages under `guangxuezhang` package, also you can use `*Service` as any class name that 
+      ends with `Service`.
+    - Skip more packages: `com..guangxuezhang`.
+      - Invalid to use `..` at the beginning of package, like this `..com.guangxuezhang`
+5. **method name**: The method that will be executed at Join Points. `*` means any methods under specified package.
+You can use `get*` as any method name that starts with `get`.
+6. **Parameter list**: 
+   - `()`: the method with no parameters.
+   - `(..)`: the method with zero or more  parameter list.
+   - `(String, ..)`: the method with parameters that first type is `String`.
+   - `(..int)`: the method with parameters that last type is `int`.
+   - `(String..int)`: the method with parameters that first is `String`, last is `int`.
+
 ## Spring AOP Use Cases
 ### 1. Logging
 AOP can be used to log method entry, exit and exceptions across various layers of
@@ -42,55 +93,5 @@ stored and retrieved quickly.
 AOP can automate the recording of audit logs for critical actions in the application,
 ensuring compliance and traceability.
 
-## Aspect Oriented Programming Core Concepts
-Before we dive into the implementation of Spring AOP implementation,
-we should understand the core concepts of AOP.
+## Combining Pointcut Expression and Reuse
 
-<img src="AOP_diagram.png" alt="AOP diagram" width="600" height="400">
-
-1. **Aspect**: An aspect is a class that implements enterprise application concerns
-that cut across multiple classes, such as transaction management. Aspect can be a
-normal class configured through Spring XML configuration, or we can use
-AspectJ integration to define a class as Aspect using `@Aspect` annotation.
-2. **Join Point**: A join point is a specific point in the application 
-such as `method execution`, `exception handling`, `changing object variable values`etc.
-in Spring AOP a join point is always the execution of method.
-3. **Advice**: Advices are taken for a particular join point. In terms of programming,
-they are methods that get executed when a certain join point with matching pointcut is
-reached in the application.
-4. **Pointcut**: Pointcut is expressions that match with join points to determine whether
-advice needs to be executed or not. Pointcut uses different kinds of expressions
-that are matched with the join points and Spring framework uses the AspectJ pointcut expression language.
-5. **Target Object**: They are the object on which advices are applied.
-Spring AOP is implemented using runtime proxies so this object is always a proxied
-object.
-
-## Pointcut Expression
-
-![Pointcut_Expression.png](Pointcut_Expression.png)
-**Expression keyword**: Pointcut expression starts with keyword: `execution`.
-
-1. **Access modifier**: `public`,`private` or `protected`.
-   - Use `*` means **any access modifier and any return types**.
-2. **return type**: `String`,`int`,`void`etc.
-   - Use `*` means either return type nor access modifier are needed.
-   - It is invalid syntax to use `* String` or `public *`
-3. **package name**: Same syntax as Java package name. 
-   - Use `*..` means any packages under last specified package name.
-4. **Class name**: The class name under the specified package name.
-    - Specified package name: `com.guangxuezhang.aop`
-    - Any packages: `com.guangxuezhang.*`
-      - Use `*` means any packages under `guangxuezhang` package, also you can use `*Service` as any class name that 
-      ends with `Service`.
-    - Skip more packages: `com..guangxuezhang`.
-      - Invalid to use `..` at the beginning of package, like this `..com.guangxuezhang`
-5. **method name**: The method that will be executed at Join Points. `*` means any methods under specified package.
-You can use `get*` as any method name that starts with `get`.
-6. **Parameter list**: 
-   - `()`: the method with no parameters.
-   - `(..)`: the method with zero or more  parameter list.
-   - `(String, ..)`: the method with parameters that first type is `String`.
-   - `(..int)`: the method with parameters that last type is `int`.
-   - `(String..int)`: the method with parameters that first is `String`, last is `int`.
-
-## Combining Pointcut Expression

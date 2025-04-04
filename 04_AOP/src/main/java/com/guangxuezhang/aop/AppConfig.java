@@ -5,13 +5,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
- * @ComponentScan without arguments
+ * `@ComponentScan` without arguments
  *    tells Spring to scan
  *    the current package
  *    and all of its sub-packages.
  */
 @Configuration
 @ComponentScan("com.guangxuezhang.aop")
-@EnableAspectJAutoProxy
+@EnableAspectJAutoProxy(proxyTargetClass=true)
 public class AppConfig {
+
 }
